@@ -1,0 +1,34 @@
+{
+  "name": "code-katas",
+  "version": "1.0.0",
+  "description": "Lovely selected code challenges by dvdvdmt",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel src/index.html src/**/index.html",
+    "test": "mocha --watch-extensions ts --watch --require ts-node/register './katas/**/*.test.ts'"
+  },
+  "repository": "",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/chai": "^4.2.3",
+    "@types/d3": "^5.7.2",
+    "@types/mocha": "^5.2.7",
+    "@typescript-eslint/eslint-plugin": "^2.3.0",
+    "@typescript-eslint/parser": "^2.3.0",
+    "chai": "^4.2.0",
+    "classnames": "^2.2.6",
+    "d3": "^5.12.0",
+    "eslint": "^6.4.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "mocha": "^6.2.0",
+    "parcel": "^1.12.3",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.3"
+  },
+  "devDependencies": {
+    "@types/classnames": "^2.2.9"
+  }
+}
