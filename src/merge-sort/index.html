@@ -7,8 +7,21 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Merge sort visualization</title>
   <style>
+    @font-face {
+      font-family: 'Pixcel';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url('../assets/fonts/pixel-cyr.woff2') format('woff2')
+    }
+
     * {
       box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Pixcel', sans-serif;
+      font-size: 24px;
     }
 
     .app {
@@ -19,10 +32,47 @@
       height: 100vh;
     }
 
-    .chart {
-      width: 500px;
-      height: 500px;
+    .app__container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 500px;
+    }
+
+    .app__message {
+      text-align: center;
+    }
+
+    .app__button {
+      background-color: transparent;
       border: 1px solid gray;
+      font-family: 'Pixcel', sans-serif;
+      margin-top: 20px;
+      font-size: inherit;
+      cursor: pointer;
+      outline: none;
+      transition: 0.2s;
+      user-select: none;
+    }
+
+    .app__button:hover {
+      background-color: black;
+      color: white;
+    }
+
+    .app__button:disabled {
+      background-color: gray;
+      color: white;
+    }
+
+    .app__button:disabled:hover {
+      cursor: not-allowed;
+    }
+
+    .chart {
+      margin-top: 20px;
+      width: 100%;
+      box-shadow: 1px 2px 5px 1px gray;
     }
 
     .chart__bar {
@@ -33,10 +83,26 @@
       fill: steelblue;
     }
 
+    .chart__mark {
+      display: none;
+      fill: white;
+    }
+
+    .chart__mark--visible {
+      display: initial;
+    }
   </style>
 </head>
 <body>
-<div class="app"></div>
+<div class="app">
+  <div class="app__container">
+    <div class="app__message">
+      Let's sort you out with <span>Merge Sort</span>!
+    </div>
+    <button type="button" class="app__button">Run</button>
+    <svg class="chart"></svg>
+  </div>
+</div>
 <script src="index.ts"></script>
 </body>
 </html>
