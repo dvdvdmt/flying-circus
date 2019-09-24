@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "parcel src/index.html src/**/index.html",
+    "build": "parcel build src/index.html src/**/index.html",
     "test": "mocha --watch-extensions ts --watch --require ts-node/register './katas/**/*.test.ts'"
   },
   "repository": "",
