@@ -1,7 +1,7 @@
 {
-  "name": "code-katas",
+  "name": "flying-circus",
   "version": "1.0.0",
-  "description": "Lovely selected code challenges by dvdvdmt",
+  "description": "dvdvdmt's imagination byproduct",
   "main": "index.js",
   "scripts": {
     "start": "parcel src/index.html src/**/index.html",
