@@ -86,13 +86,10 @@ window.addEventListener('load', () => {
     return result
   }
 
-  async function updateState(
-    part: number[],
-    start: number
-  ): Promise<undefined> {
+  async function updateState(part: number[], start: number): Promise<void> {
     state.splice(start, part.length, ...part)
     plot({data: state, mergeRange: [start, start + part.length], encodedImage})
-    return new Promise((resolve) => {
+    return new Promise<void>((resolve) => {
       requestAnimationFrame(() => {
         resolve()
       })

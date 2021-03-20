@@ -54,21 +54,29 @@ export default function initPlot(
           c('chart__bar', {'chart__bar--colored': isInMergeRange(i)})
         )
         .attr('width', barWidth)
+        // @ts-expect-error
         .attr('height', (v) => chartHeight - yScale(v))
+        // @ts-expect-error
         .attr('y', yScale)
 
       if (encodedImage) {
+        // @ts-expect-error
         const barsWithMarks = selection.filter((d) => encodedImage[d])
         const marks = barsWithMarks
+          // @ts-expect-error
           .selectAll('.chart__mark')
+          // @ts-expect-error
           .data((d) => encodedImage[d])
 
         marks
+          // @ts-expect-error
           .enter()
           .append('rect')
+          // @ts-expect-error
           .attr('class', (d) => c('chart__mark', {'chart__mark--visible': d}))
           .attr('width', barWidth)
           .attr('height', barWidth)
+          // @ts-expect-error
           .attr('y', (_, i) => chartHeight - i * barWidth - barWidth)
       }
     }
