@@ -1,5 +1,8 @@
+import * as PIXI from 'pixi.js'
+
 document.addEventListener('DOMContentLoaded', main)
 
 function main() {
-  document.querySelector('.app')!.innerHTML = 'Hello world!'
+  const app = new PIXI.Application({width: 256, height: 256})
+  document.querySelector('.app')!.appendChild(app.view)
 }
