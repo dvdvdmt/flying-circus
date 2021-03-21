@@ -1,12 +1,11 @@
 export function rotationGenerator(
   center: {x: number; y: number},
   radius: number,
-  speed = 0.01
+  angleIncrement = 0.01
 ): () => {x: number; y: number} {
-  let step = -1
+  let angle = -angleIncrement
   return function nextPosition(): {x: number; y: number} {
-    step += 1
-    const angle = step * speed
+    angle += angleIncrement
     return {x: radius * Math.cos(angle), y: radius * Math.sin(angle)}
   }
 }

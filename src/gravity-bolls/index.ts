@@ -1,24 +1,11 @@
 import * as PIXI from 'pixi.js'
-import {rotationGenerator} from './rotation-generator'
+import {setupScene} from './setup-scene'
 
 document.addEventListener('DOMContentLoaded', main)
 
-function createCircle(x: number, y: number): PIXI.Graphics {
-  const graphics = new PIXI.Graphics()
-  graphics.beginFill(0x0000ff)
-  graphics.drawCircle(x, y, 250)
-  return graphics
-}
-
 function main(): void {
   const app = createApp()
-  const circle = createCircle(app.view.width / 2, app.view.height / 2)
-  app.stage.addChild(circle)
-  const nextRotatePosition = rotationGenerator(circle.position, 200)
-  app.ticker.add(() => {
-    const nextPoint = nextRotatePosition()
-    circle.position.set(nextPoint.x, nextPoint.y)
-  })
+  setupScene(app)
 }
 
 function createApp(): PIXI.Application {
