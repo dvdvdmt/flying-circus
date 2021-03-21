@@ -1,8 +1,12 @@
 import * as PIXI from 'pixi.js'
 
-export function createCircle(x: number, y: number): PIXI.Graphics {
+export function createCircle(
+  point: PIXI.IPointData,
+  radius: number,
+  color = 0x0000ff
+): PIXI.Graphics {
   const graphics = new PIXI.Graphics()
-  graphics.beginFill(0x0000ff)
-  graphics.drawCircle(x, y, 250)
+  graphics.beginFill(color)
+  graphics.drawCircle(point.x, point.y, radius)
   return graphics
 }
