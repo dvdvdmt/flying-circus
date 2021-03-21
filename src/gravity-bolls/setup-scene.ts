@@ -1,37 +1,23 @@
 import * as PIXI from 'pixi.js'
-import {createCircle} from './utils/create-circle'
-import {rotationGenerator} from './rotation-generator'
+import {ICelestialBodyData} from './types'
+import {CelestialBody} from './celestial-body'
 
 export function setupScene(app: PIXI.Application): void {
   const sceneCenter: PIXI.IPointData = {
     x: app.view.width / 2,
     y: app.view.height / 2,
   }
-  const [sun, mercury, ...planets] = solarSystemData(sceneCenter)
-  const sunCircle = createCircle(sun.gravityCenter, sun.radius, sun.color)
-  app.stage.addChild(sunCircle)
-  const mercuryCircle = createCircle(
-    mercury.gravityCenter,
-    mercury.radius,
-    mercury.color
+  const [sun, mercury, ...planets] = solarSystemData(sceneCenter).map(
+    (data) => new CelestialBody(data)
   )
-  app.stage.addChild(mercuryCircle)
-  const nextRotatePosition = rotationGenerator(sceneCenter, mercury.position)
+  app.stage.addChild(sun.view)
+  app.stage.addChild(mercury.view)
   app.ticker.add(() => {
-    const nextPoint = nextRotatePosition()
-    mercuryCircle.position.set(nextPoint.x, nextPoint.y)
+    mercury.move()
   })
 }
 
-interface ICelestialBody {
-  name: string
-  position: PIXI.IPointData
-  gravityCenter: PIXI.IPointData
-  radius: number
-  color: number
-}
-
-function solarSystemData(center: PIXI.IPointData): ICelestialBody[] {
+function solarSystemData(center: PIXI.IPointData): ICelestialBodyData[] {
   const orbitGap = 5
   const sunRadius = 200
   const mercuryRadius = 5
