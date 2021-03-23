@@ -5,5 +5,6 @@ export interface ICelestialBodyData {
   position: PIXI.IPointData
   gravityCenter: PIXI.IPointData
   radius: number
+  rotationSpeedAroundSun: number
   color: number
 }

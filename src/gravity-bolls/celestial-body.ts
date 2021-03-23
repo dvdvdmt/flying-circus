@@ -10,7 +10,8 @@ export class CelestialBody {
     this.view = createCircle(data.gravityCenter, data.radius, data.color)
     this.rotationGenerator = rotationGenerator(
       data.gravityCenter,
-      data.position
+      data.position,
+      data.rotationSpeedAroundSun
     )
   }
 
