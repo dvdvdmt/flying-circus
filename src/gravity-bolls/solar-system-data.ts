@@ -4,7 +4,7 @@ import {ICelestialBodyData} from './types'
 export function solarSystemData(center: PIXI.IPointData): ICelestialBodyData[] {
   const orbitGap = 5
   const sunRadius = 200
-  const earthRotationSpeedAroundSun = 0.005
+  const earthRotationSpeedAroundSun = 0.005 // 365 days
   return [
     {
       name: 'Sun',
@@ -29,6 +29,14 @@ export function solarSystemData(center: PIXI.IPointData): ICelestialBodyData[] {
       radius: 10,
       rotationSpeedAroundSun: earthRotationSpeedAroundSun * 1.624388073, // 224.7 days
       color: 0xf3d39d,
+    },
+    {
+      name: 'Earth',
+      position: center,
+      gravityCenter: center,
+      radius: 12,
+      rotationSpeedAroundSun: earthRotationSpeedAroundSun,
+      color: 0x8fabd4,
     },
   ].map(alignBodies)
 
