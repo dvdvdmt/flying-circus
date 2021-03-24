@@ -4,7 +4,6 @@ import {ICelestialBodyData} from './types'
 export function solarSystemData(center: PIXI.IPointData): ICelestialBodyData[] {
   const orbitGap = 5
   const sunRadius = 200
-  const earthRotationSpeedAroundSun = 0.005 // 365 days
   return [
     {
       name: 'Sun',
@@ -18,8 +17,8 @@ export function solarSystemData(center: PIXI.IPointData): ICelestialBodyData[] {
       name: 'Mercury',
       position: center,
       gravityCenter: center,
-      radius: 5,
-      rotationSpeedAroundSun: earthRotationSpeedAroundSun * 4.147727273, // 88 days
+      radius: 4,
+      rotationSpeedAroundSun: rotationSpeed(88),
       color: 0xb1a7a2,
     },
     {
@@ -27,7 +26,7 @@ export function solarSystemData(center: PIXI.IPointData): ICelestialBodyData[] {
       position: center,
       gravityCenter: center,
       radius: 10,
-      rotationSpeedAroundSun: earthRotationSpeedAroundSun * 1.624388073, // 224.7 days
+      rotationSpeedAroundSun: rotationSpeed(225),
       color: 0xf3d39d,
     },
     {
@@ -35,8 +34,16 @@ export function solarSystemData(center: PIXI.IPointData): ICelestialBodyData[] {
       position: center,
       gravityCenter: center,
       radius: 12,
-      rotationSpeedAroundSun: earthRotationSpeedAroundSun,
+      rotationSpeedAroundSun: rotationSpeed(365),
       color: 0x8fabd4,
+    },
+    {
+      name: 'Mars',
+      position: center,
+      gravityCenter: center,
+      radius: 6,
+      rotationSpeedAroundSun: rotationSpeed(687),
+      color: 0xb07764,
     },
   ].map(alignBodies)
 
@@ -62,4 +69,10 @@ export function solarSystemData(center: PIXI.IPointData): ICelestialBodyData[] {
       y: prevBody.position.y - prevBody.radius - orbitGap - nextBody.radius,
     }
   }
+}
+
+function rotationSpeed(days: number): number {
+  const animationSpeed = 0.005
+  const earthDays = 365
+  return (earthDays / days) * animationSpeed
 }
