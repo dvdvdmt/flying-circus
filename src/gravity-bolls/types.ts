@@ -5,6 +5,7 @@ export interface ICelestialBodyData {
   position: PIXI.IPointData
   gravityCenter: PIXI.IPointData
   radius: number
-  rotationSpeedAroundSun: number
+  distanceFromSun: number // astronomical units (AU)
+  rotationSpeedAroundSun: number // days
   color: number
 }
