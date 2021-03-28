@@ -1,4 +1,4 @@
-interface ILinearObject {
+export interface ILinearObject {
   position: number
   size: number
 }
@@ -22,7 +22,7 @@ export function distributeObjects(
   return shiftOverlappedObjectsToRight(objects)
 }
 
-function shiftOverlappedObjectsToRight(objects: ILinearObject[]) {
+function shiftOverlappedObjectsToRight(objects: ILinearObject[]): number[] {
   let prevRight: number
   return objects.map(({position, size}, i) => {
     let result = position
