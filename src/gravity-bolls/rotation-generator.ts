@@ -8,7 +8,10 @@ export function rotationGenerator(
   let angle = -angleIncrement
   return function nextPosition(): {x: number; y: number} {
     angle += angleIncrement
-    return {x: radius * Math.cos(angle), y: radius * Math.sin(angle)}
+    return {
+      x: center.x + radius * Math.cos(angle),
+      y: center.y + radius * Math.sin(angle),
+    }
   }
 }
 
