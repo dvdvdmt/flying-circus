@@ -1,18 +1,13 @@
 import * as PIXI from 'pixi.js'
 import {CelestialBody} from './celestial-body'
-import {solarSystemData} from './solar-system-data'
-import {alignBodies} from './utils/align-bodies'
+import {solarSystemVisualData} from './utils/solar-system-visual-data'
 
 export function setupScene(app: PIXI.Application): void {
   const sceneCenter: PIXI.IPointData = {
     x: app.view.width / 2,
     y: app.view.height / 2,
   }
-  const maxSceneSize = Math.max(sceneCenter.x, sceneCenter.y)
-  const [sun, ...planets] = alignBodies(
-    solarSystemData(sceneCenter),
-    maxSceneSize
-  ).map((data) => {
+  const [sun, ...planets] = solarSystemVisualData(sceneCenter).map((data) => {
     return new CelestialBody(data)
   })
   app.stage.addChild(sun.view)
