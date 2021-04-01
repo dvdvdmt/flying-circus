@@ -75,6 +75,15 @@ export function solarSystemData(center: PIXI.IPointData): ICelestialBodyData[] {
       rotationSpeedAroundSun: rotationSpeed(30688),
       color: 0x96b6c1,
     },
+    {
+      name: 'Triton',
+      position: {...center},
+      gravityCenter: {...center},
+      radius: 16,
+      distanceFromSun: 30,
+      rotationSpeedAroundSun: rotationSpeed(60182),
+      color: 0x5285b4,
+    },
   ]
 }
 
