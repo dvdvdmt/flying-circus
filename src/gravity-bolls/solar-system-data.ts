@@ -2,13 +2,12 @@ import * as PIXI from 'pixi.js'
 import {ICelestialBodyData} from './types'
 
 export function solarSystemData(center: PIXI.IPointData): ICelestialBodyData[] {
-  const sunRadius = 200
   return [
     {
       name: 'Sun',
       position: {...center},
       gravityCenter: {...center},
-      radius: sunRadius,
+      radius: 200,
       distanceFromSun: 0,
       rotationSpeedAroundSun: 0,
       color: 0xfdffa3,
@@ -48,6 +47,33 @@ export function solarSystemData(center: PIXI.IPointData): ICelestialBodyData[] {
       distanceFromSun: 1.5,
       rotationSpeedAroundSun: rotationSpeed(687),
       color: 0xb07764,
+    },
+    {
+      name: 'Jupiter',
+      position: {...center},
+      gravityCenter: {...center},
+      radius: 80,
+      distanceFromSun: 5.2,
+      rotationSpeedAroundSun: rotationSpeed(4332),
+      color: 0xa56956,
+    },
+    {
+      name: 'Saturn',
+      position: {...center},
+      gravityCenter: {...center},
+      radius: 50,
+      distanceFromSun: 9.5,
+      rotationSpeedAroundSun: rotationSpeed(10759),
+      color: 0xe9c197,
+    },
+    {
+      name: 'Uranus',
+      position: {...center},
+      gravityCenter: {...center},
+      radius: 20,
+      distanceFromSun: 19.2,
+      rotationSpeedAroundSun: rotationSpeed(30688),
+      color: 0x96b6c1,
     },
   ]
 }
