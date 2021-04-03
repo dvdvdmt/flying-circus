@@ -6,7 +6,7 @@ export function setupScene(app: PIXI.Application): void {
     x: app.view.width / 2,
     y: app.view.height / 2,
   }
-  const [sun, ...planets] = solarSystemFactory(sceneCenter)
+  const [sun, ...planets] = solarSystemFactory({sceneCenter})
   app.stage.addChild(sun.view)
   planets.forEach(({view}) => {
     app.stage.addChild(view)
