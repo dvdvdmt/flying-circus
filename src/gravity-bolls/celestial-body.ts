@@ -4,16 +4,23 @@ import {ICelestialBodyData} from './types'
 import {createCircle} from './utils/create-circle'
 
 export class CelestialBody {
-  view: PIXI.Graphics
+  readonly view: PIXI.Graphics
   private nextPosition: () => PIXI.IPointData
+  private info: ICelestialBodyData
 
-  constructor(data: ICelestialBodyData) {
-    this.view = createCircle(data.radius, data.color)
-    this.position = data.position
+  constructor(
+    initialPosition: PIXI.IPointData,
+    rotationCenter: PIXI.IPointData,
+    rotationSpeed: number,
+    info: ICelestialBodyData
+  ) {
+    this.info = info
+    this.view = createCircle(info.radius, info.color)
+    this.position = initialPosition
     this.nextPosition = rotationGenerator(
-      data.gravityCenter,
-      data.position,
-      data.rotationSpeedAroundSun
+      rotationCenter,
+      initialPosition,
+      rotationSpeed
     )
   }
 
