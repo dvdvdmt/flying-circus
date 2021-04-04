@@ -15,7 +15,8 @@ const defaultOptions: PickOptional<IOptions> = {
 
 /*
  TODO:
- - Create options object that will configure solar system appearance
+ - Reduce Sun radius to give planets more space
+ - Introduce the concept of revolution (rotation around external point - Sun)
 */
 export function solarSystemFactory(options: IOptions): CelestialBody[] {
   const {sceneCenter} = {...defaultOptions, ...options}

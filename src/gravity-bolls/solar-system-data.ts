@@ -1,8 +1,9 @@
-import {ICelestialBodyData} from './types'
+import {CelestialType, ICelestialBodyData} from './types'
 
 export function solarSystemData(): ICelestialBodyData[] {
   return [
     {
+      type: CelestialType.Star,
       name: 'Sun',
       radius: 200,
       distanceFromSun: 0,
@@ -10,6 +11,7 @@ export function solarSystemData(): ICelestialBodyData[] {
       color: 0xfdffa3,
     },
     {
+      type: CelestialType.Planet,
       name: 'Mercury',
       radius: 4,
       distanceFromSun: 0.4,
@@ -17,6 +19,7 @@ export function solarSystemData(): ICelestialBodyData[] {
       color: 0xb1a7a2,
     },
     {
+      type: CelestialType.Planet,
       name: 'Venus',
       radius: 10,
       distanceFromSun: 0.7,
@@ -24,6 +27,7 @@ export function solarSystemData(): ICelestialBodyData[] {
       color: 0xf3d39d,
     },
     {
+      type: CelestialType.Planet,
       name: 'Earth',
       radius: 12,
       distanceFromSun: 1,
@@ -31,6 +35,7 @@ export function solarSystemData(): ICelestialBodyData[] {
       color: 0x8fabd4,
     },
     {
+      type: CelestialType.Planet,
       name: 'Mars',
       radius: 6,
       distanceFromSun: 1.5,
@@ -38,6 +43,7 @@ export function solarSystemData(): ICelestialBodyData[] {
       color: 0xb07764,
     },
     {
+      type: CelestialType.Planet,
       name: 'Jupiter',
       radius: 80,
       distanceFromSun: 5.2,
@@ -45,6 +51,7 @@ export function solarSystemData(): ICelestialBodyData[] {
       color: 0xa56956,
     },
     {
+      type: CelestialType.Planet,
       name: 'Saturn',
       radius: 50,
       distanceFromSun: 9.5,
@@ -52,6 +59,7 @@ export function solarSystemData(): ICelestialBodyData[] {
       color: 0xe9c197,
     },
     {
+      type: CelestialType.Planet,
       name: 'Uranus',
       radius: 20,
       distanceFromSun: 19.2,
@@ -59,6 +67,7 @@ export function solarSystemData(): ICelestialBodyData[] {
       color: 0x96b6c1,
     },
     {
+      type: CelestialType.Planet,
       name: 'Triton',
       radius: 16,
       distanceFromSun: 30,
