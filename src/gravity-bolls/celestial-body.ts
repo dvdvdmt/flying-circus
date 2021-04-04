@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js'
 import {rotationGenerator} from './rotation-generator'
-import {ICelestialBodyData} from './types'
+import {ICelestialBodyData, ICelestialVisual} from './types'
 import {createCircle} from './utils/create-circle'
 
 export class CelestialBody {
@@ -8,19 +8,14 @@ export class CelestialBody {
   private nextPosition: () => PIXI.IPointData
   private info: ICelestialBodyData
 
-  constructor(
-    initialPosition: PIXI.IPointData,
-    rotationCenter: PIXI.IPointData,
-    rotationSpeed: number,
-    info: ICelestialBodyData
-  ) {
+  constructor({radius, position, revolution, info}: ICelestialVisual) {
     this.info = info
-    this.view = createCircle(info.radius, info.color)
-    this.position = initialPosition
+    this.view = createCircle(radius, info.color)
+    this.position = position
     this.nextPosition = rotationGenerator(
-      rotationCenter,
-      initialPosition,
-      rotationSpeed
+      revolution.center,
+      position,
+      revolution.speed
     )
   }
 
