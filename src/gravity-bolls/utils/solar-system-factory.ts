@@ -1,11 +1,11 @@
 import * as PIXI from 'pixi.js'
-import {distributeObjects, ILinearObject} from './distribute-objects'
 import {solarSystemData} from '../solar-system-data'
 import {CelestialBody} from '../celestial-body'
 import {PickOptional} from './types'
 import {ICelestialBodyData, ICelestialVisual} from '../types'
-import {solarSystemVisualDataMap} from '../solar-system-visual-data-map'
 import {celestialVisualData} from './celestial-visual-data'
+import {enrichWithRadius} from './enrich-with-radius'
+import {enrichWithPosition} from './enrich-with-position'
 
 interface IOptions {
   sceneCenter: PIXI.IPointData
@@ -20,11 +20,9 @@ function visualPresentation(
   data: ICelestialBodyData[],
   {sceneCenter}: IOptions
 ): ICelestialVisual[] {
-  const maxSceneSize = Math.min(sceneCenter.x, sceneCenter.y)
   const visualData = data.map((datum) => {
     return celestialVisualData({
       type: datum.type,
-      radius: solarSystemVisualDataMap[datum.name].radius,
       revolution: {
         center: sceneCenter,
         speed: rotationSpeed(datum.rotationSpeedAroundSun),
@@ -32,21 +30,14 @@ function visualPresentation(
       info: datum,
     })
   })
-  const objects = visualData.map<ILinearObject>(({info, radius}) => ({
-    position: info.distanceFromSun,
-    size: radius * 2,
-  }))
-  const positions = distributeObjects(objects, maxSceneSize)
-  return visualData.map((datum, i) => {
-    return {
-      ...datum,
-      position: {x: sceneCenter.x, y: sceneCenter.y + positions[i]},
-    }
-  })
+  enrichWithRadius(visualData)
+  enrichWithPosition(visualData, sceneCenter)
+  return visualData
 }
 
 /*
  TODO:
+ - Clamp planet radii between two values but preserve their relative difference
  - Express rotation speed in Earth years instead of days
  - Align planets by distributing free space evenly
  - Show orbits
