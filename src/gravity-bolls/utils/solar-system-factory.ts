@@ -5,6 +5,7 @@ import {CelestialBody} from '../celestial-body'
 import {PickOptional} from './types'
 import {ICelestialBodyData, ICelestialVisual} from '../types'
 import {solarSystemVisualDataMap} from '../solar-system-visual-data-map'
+import {celestialVisualData} from './celestial-visual-data'
 
 interface IOptions {
   sceneCenter: PIXI.IPointData
@@ -21,7 +22,7 @@ function visualPresentation(
 ): ICelestialVisual[] {
   const maxSceneSize = Math.min(sceneCenter.x, sceneCenter.y)
   const visualData = data.map((datum) => {
-    return {
+    return celestialVisualData({
       type: datum.type,
       radius: solarSystemVisualDataMap[datum.name].radius,
       revolution: {
@@ -29,7 +30,7 @@ function visualPresentation(
         speed: rotationSpeed(datum.rotationSpeedAroundSun),
       },
       info: datum,
-    }
+    })
   })
   const objects = visualData.map<ILinearObject>(({info, radius}) => ({
     position: info.distanceFromSun,
@@ -48,6 +49,8 @@ function visualPresentation(
  TODO:
  - Express rotation speed in Earth years instead of days
  - Align planets by distributing free space evenly
+ - Show orbits
+ - Add asteroid belt
 */
 export function solarSystemFactory(options: IOptions): CelestialBody[] {
   const settings = {...defaultOptions, ...options}
