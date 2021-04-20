@@ -20,4 +20,14 @@ describe(`clampNumbers`, () => {
     const result = clampNumbers([11], 5, 10)
     expect(result).toEqual([10])
   })
+
+  it(`clamps values without scaling`, () => {
+    const result = clampNumbers([1, 2, 3], 1, 3)
+    expect(result).toEqual([1, 2, 3])
+  })
+
+  it(`clamps values and scale them`, () => {
+    const result = clampNumbers([1, 2, 3], 10, 30)
+    expect(result).toEqual([10, 20, 30])
+  })
 })
