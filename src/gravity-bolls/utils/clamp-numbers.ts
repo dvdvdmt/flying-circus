@@ -10,17 +10,15 @@ export function clampNumbers(
   if (numbers.length === 0) {
     return numbers
   }
-  if (numbers.length === 1) {
-    return numbers.map((num) => {
-      return clamp(num, minBoundary, maxBoundary)
-    })
-  }
   const boundarySpan = maxBoundary - minBoundary
   const maxNumber = Math.max(...numbers)
   const minNumber = Math.min(...numbers)
   const numberSpan = maxNumber - minNumber
   return numbers.map((num) => {
-    const shiftedNum = num - minNumber
-    return minBoundary + boundarySpan * (shiftedNum / numberSpan)
+    if (numberSpan === 0) {
+      return minBoundary
+    }
+    const relativeNumberSize = (num - minNumber) / numberSpan
+    return minBoundary + boundarySpan * relativeNumberSize
   })
 }

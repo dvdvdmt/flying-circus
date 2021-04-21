@@ -6,27 +6,32 @@ describe(`clampNumbers`, () => {
     expect(result).toHaveLength(0)
   })
 
-  it(`doesn't change a single value if it is inside the range`, () => {
-    const result = clampNumbers([1], 0, 10)
-    expect(result).toEqual([1])
+  it(`maps single value to minimum`, () => {
+    const result = clampNumbers([777], 0, 10)
+    expect(result).toEqual([0])
   })
 
-  it(`clamps single value if it is smaller than minimum`, () => {
-    const result = clampNumbers([1], 5, 10)
-    expect(result).toEqual([5])
+  it(`maps several equal values to minimum`, () => {
+    const result = clampNumbers([1, 1, 1], 0, 10)
+    expect(result).toEqual([0, 0, 0])
   })
 
-  it(`clamps single value if it is bigger than maximum`, () => {
-    const result = clampNumbers([11], 5, 10)
-    expect(result).toEqual([10])
+  it(`maps two different values to min and max boundaries`, () => {
+    const result = clampNumbers([1, 2], 5, 10)
+    expect(result).toEqual([5, 10])
   })
 
-  it(`clamps values without scaling`, () => {
+  it(`preserves original values if min and max boundaries are equal to min and max numbers`, () => {
     const result = clampNumbers([1, 2, 3], 1, 3)
     expect(result).toEqual([1, 2, 3])
   })
 
-  it(`clamps values and scale them`, () => {
+  it(`translates numbers to specified range`, () => {
+    const result = clampNumbers([1, 2, 3], 111, 113)
+    expect(result).toEqual([111, 112, 113])
+  })
+
+  it(`scales numbers to fit specified range`, () => {
     const result = clampNumbers([1, 2, 3], 10, 30)
     expect(result).toEqual([10, 20, 30])
   })
