@@ -8,7 +8,6 @@ export enum CelestialType {
 export interface ICelestialBodyData {
   type: CelestialType
   name: string
-  radius: number
   diameter: number // relative to Earth diameter
   distanceFromSun: number // astronomical units (AU)
   rotationSpeedAroundSun: number // days

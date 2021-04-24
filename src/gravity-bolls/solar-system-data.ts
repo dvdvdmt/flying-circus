@@ -5,7 +5,6 @@ export function solarSystemData(): ICelestialBodyData[] {
     {
       type: CelestialType.Star,
       name: 'Sun',
-      radius: 200,
       diameter: 109.18,
       distanceFromSun: 0,
       rotationSpeedAroundSun: 0,
@@ -14,7 +13,6 @@ export function solarSystemData(): ICelestialBodyData[] {
     {
       type: CelestialType.Planet,
       name: 'Mercury',
-      radius: 4,
       diameter: 0.38,
       distanceFromSun: 0.4,
       rotationSpeedAroundSun: 88,
@@ -23,7 +21,6 @@ export function solarSystemData(): ICelestialBodyData[] {
     {
       type: CelestialType.Planet,
       name: 'Venus',
-      radius: 10,
       diameter: 0.95,
       distanceFromSun: 0.7,
       rotationSpeedAroundSun: 225,
@@ -32,7 +29,6 @@ export function solarSystemData(): ICelestialBodyData[] {
     {
       type: CelestialType.Planet,
       name: 'Earth',
-      radius: 12,
       diameter: 1,
       distanceFromSun: 1,
       rotationSpeedAroundSun: 365,
@@ -41,7 +37,6 @@ export function solarSystemData(): ICelestialBodyData[] {
     {
       type: CelestialType.Planet,
       name: 'Mars',
-      radius: 6,
       diameter: 0.53,
       distanceFromSun: 1.5,
       rotationSpeedAroundSun: 687,
@@ -50,7 +45,6 @@ export function solarSystemData(): ICelestialBodyData[] {
     {
       type: CelestialType.Planet,
       name: 'Jupiter',
-      radius: 80,
       diameter: 11.2,
       distanceFromSun: 5.2,
       rotationSpeedAroundSun: 4332,
@@ -59,7 +53,6 @@ export function solarSystemData(): ICelestialBodyData[] {
     {
       type: CelestialType.Planet,
       name: 'Saturn',
-      radius: 50,
       diameter: 9.45,
       distanceFromSun: 9.5,
       rotationSpeedAroundSun: 10759,
@@ -68,7 +61,6 @@ export function solarSystemData(): ICelestialBodyData[] {
     {
       type: CelestialType.Planet,
       name: 'Uranus',
-      radius: 20,
       diameter: 4.01,
       distanceFromSun: 19.2,
       rotationSpeedAroundSun: 30688,
@@ -77,7 +69,6 @@ export function solarSystemData(): ICelestialBodyData[] {
     {
       type: CelestialType.Planet,
       name: 'Triton',
-      radius: 16,
       diameter: 3.88,
       distanceFromSun: 30,
       rotationSpeedAroundSun: 60182,

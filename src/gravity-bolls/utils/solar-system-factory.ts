@@ -4,7 +4,7 @@ import {CelestialBody} from '../celestial-body'
 import {PickOptional} from './types'
 import {ICelestialBodyData, ICelestialVisual} from '../types'
 import {celestialVisualData} from './celestial-visual-data'
-import {enrichWithRadius} from './enrich-with-radius'
+import {enrichWithClampedRadius} from './enrich-with-radius'
 import {enrichWithPosition} from './enrich-with-position'
 
 interface IOptions {
@@ -27,17 +27,17 @@ function visualPresentation(
         center: sceneCenter,
         speed: rotationSpeed(datum.rotationSpeedAroundSun),
       },
+      radius: datum.diameter / 2,
       info: datum,
     })
   })
-  enrichWithRadius(visualData)
+  enrichWithClampedRadius(visualData, 2, 80)
   enrichWithPosition(visualData, sceneCenter)
   return visualData
 }
 
 /*
  TODO:
- - Clamp planet radii between two values but preserve their relative difference
  - Express rotation speed in Earth years instead of days
  - Align planets by distributing free space evenly
  - Show orbits
