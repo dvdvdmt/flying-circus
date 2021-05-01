@@ -39,7 +39,16 @@ function visualPresentation(
 /*
  TODO:
  - Express rotation speed in Earth years instead of days
- - Align planets by distributing free space evenly
+ - Align planets by distributing free space evenly.
+   This should work like that:
+   1. We have relative planet distances from star.
+      These are our weights.
+   2. We distribute free space between planets according to
+      these weights.
+   3. We have coefficient (CX) that controls free space
+      distribution according to weight.
+      CX = 1 - all space is distributed based on weights.
+      CX = 0 - space is distributed evenly, weights do nothing.
  - Show orbits
  - Add asteroid belt
 */
