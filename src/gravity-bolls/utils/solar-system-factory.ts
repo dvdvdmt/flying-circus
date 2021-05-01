@@ -5,7 +5,7 @@ import {PickOptional} from './types'
 import {ICelestialBodyData, ICelestialVisual} from '../types'
 import {celestialVisualData} from './celestial-visual-data'
 import {enrichWithClampedRadius} from './enrich-with-radius'
-import {enrichWithPosition} from './enrich-with-position'
+import {positionByRelativeDistances} from './position-by-relative-distances'
 
 interface IOptions {
   sceneCenter: PIXI.IPointData
@@ -32,23 +32,14 @@ function visualPresentation(
     })
   })
   enrichWithClampedRadius(visualData, 2, 80)
-  enrichWithPosition(visualData, sceneCenter)
+  // positionWithoutOverlap(visualData, sceneCenter)
+  positionByRelativeDistances(visualData, sceneCenter)
   return visualData
 }
 
 /*
  TODO:
  - Express rotation speed in Earth years instead of days
- - Align planets by distributing free space evenly.
-   This should work like that:
-   1. We have relative planet distances from star.
-      These are our weights.
-   2. We distribute free space between planets according to
-      these weights.
-   3. We have coefficient (CX) that controls free space
-      distribution according to weight.
-      CX = 1 - all space is distributed based on weights.
-      CX = 0 - space is distributed evenly, weights do nothing.
  - Show orbits
  - Add asteroid belt
 */
