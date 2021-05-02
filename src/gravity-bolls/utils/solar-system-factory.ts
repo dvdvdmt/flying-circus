@@ -6,6 +6,7 @@ import {ICelestialBodyData, ICelestialVisual} from '../types'
 import {celestialVisualData} from './celestial-visual-data'
 import {enrichWithClampedRadius} from './enrich-with-radius'
 import {positionByRelativeDistances} from './position-by-relative-distances'
+import {PlanetOrbit} from '../planet-orbit'
 
 interface IOptions {
   sceneCenter: PIXI.IPointData
@@ -39,17 +40,27 @@ function visualPresentation(
 
 /*
  TODO:
+ - Show orbits only on mouse hover
  - Express rotation speed in Earth years instead of days
- - Show orbits
  - Add asteroid belt
 */
-export function solarSystemFactory(options: IOptions): CelestialBody[] {
+export function solarSystemFactory(
+  options: IOptions
+): {sun: CelestialBody; planets: CelestialBody[]; orbits: PlanetOrbit[]} {
   const settings = {...defaultOptions, ...options}
-  const data = visualPresentation(solarSystemData(), settings)
-
-  return data.map((datum) => {
-    return new CelestialBody(datum)
-  })
+  const [sun, ...planets] = visualPresentation(solarSystemData(), settings)
+  return {
+    sun: new CelestialBody(sun),
+    planets: planets.map((datum) => new CelestialBody(datum)),
+    orbits: planets.map(
+      (planet) =>
+        new PlanetOrbit(
+          settings.sceneCenter,
+          planet.info.color,
+          planet.position.x - settings.sceneCenter.x
+        )
+    ),
+  }
 }
 
 function rotationSpeed(days: number): number {

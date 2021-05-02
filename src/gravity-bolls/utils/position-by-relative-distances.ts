@@ -16,6 +16,6 @@ export function positionByRelativeDistances(
     0.7
   )
   planets.forEach((datum, i) => {
-    datum.position = {x: sceneCenter.x, y: sceneCenter.y + distances[i]}
+    datum.position = {x: sceneCenter.x + distances[i], y: sceneCenter.y}
   })
 }

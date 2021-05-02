@@ -15,7 +15,6 @@ export function enrichWithClampedRadius(
 ) {
   const radii = data.map((datum) => datum.radius)
   const clampedRadii = clampNumbers(radii, min, max)
-  console.log(`[enrichWithClampedRadius clampedRadii]`, clampedRadii)
   data.forEach((datum, i) => {
     datum.radius = clampedRadii[i]
   })
