@@ -4,11 +4,11 @@ export class PlanetOrbit {
   readonly view: PIXI.Graphics
 
   constructor(position: PIXI.IPointData, color: number, radius: number) {
-    this.view = PlanetOrbit.createHollowCircle(color, radius)
+    this.view = PlanetOrbit.createCircle(color, radius)
     this.position = position
   }
 
-  private static createHollowCircle(
+  private static createCircle(
     color: number,
     radius: number
   ): PIXI.Graphics {
