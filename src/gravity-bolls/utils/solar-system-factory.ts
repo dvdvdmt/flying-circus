@@ -40,9 +40,13 @@ function visualPresentation(
 
 /*
  TODO:
- - Show orbits only on mouse hover
- - Express rotation speed in Earth years instead of days
- - Add asteroid belt
+ - Fix resolution on high DPI screens.
+ - Show name of a planet near the cursor when its orbit is hovered.
+ - Show additional information about a planet with its preview near the cursor.
+ - Express rotation speed in Earth years instead of days.
+ - Add Asteroid belt and Kuiper belt.
+ - Add scene dragging.
+ - Add scene zooming.
 */
 export function solarSystemFactory(
   options: IOptions
