@@ -15,6 +15,8 @@ function createApp(): PIXI.Application {
     width,
     height,
     autoDensity: true,
+    antialias: true,
+    resolution: window.devicePixelRatio,
   })
   document.querySelector('.app')!.appendChild(app.view)
   return app

@@ -40,7 +40,6 @@ function visualPresentation(
 
 /*
  TODO:
- - Fix resolution on high DPI screens.
  - Show name of a planet near the cursor when its orbit is hovered.
  - Show additional information about a planet with its preview near the cursor.
  - Express rotation speed in Earth years instead of days.

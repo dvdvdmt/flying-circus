@@ -3,8 +3,8 @@ import {solarSystemFactory} from './utils/solar-system-factory'
 
 export function setupScene(app: PIXI.Application): void {
   const sceneCenter: PIXI.IPointData = {
-    x: app.view.width / 2,
-    y: app.view.height / 2,
+    x: window.innerWidth / 2,
+    y: window.innerHeight / 2,
   }
   const {sun, planets, orbits} = solarSystemFactory({sceneCenter})
   app.stage.addChild(sun.view)
