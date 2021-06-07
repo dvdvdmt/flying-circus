@@ -53,12 +53,7 @@ export function solarSystemFactory(
     sun: new CelestialBody(sun),
     planets: planets.map((datum) => new CelestialBody(datum)),
     orbits: planets.map(
-      (planet) =>
-        new PlanetOrbit(
-          settings.sceneCenter,
-          planet.info.color,
-          planet.position.x - settings.sceneCenter.x
-        )
+      (planet) => new PlanetOrbit(settings.sceneCenter, planet)
     ),
   }
 }
